@@ -1,0 +1,527 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Times New Roman";
+    width: 100%;
+    height: 100vh;
+    background: #121213;
+    display: grid;
+    place-items: center;
+    color: white;
+}
+
+header {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ffffff00;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+header .menu_side , 
+.song_side {
+    width: 20%;
+    height: 88%;
+    background: #090f1f;
+    box-shadow: 5px 0px 2px #090f1f;
+}
+
+header .song_side {
+    width: 80%;
+    background: #121213e3;
+}
+
+header .master_play {
+    width: 100%;
+    height: 13%;
+    background-color: #12244186;
+}
+
+header .song_side .profile img{
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+header .song_side nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 36px;
+    padding-bottom: 25px;
+    padding-left: 8px;
+    padding-right: 20%;
+}
+
+header .menu_side .playlist {
+    margin: 23px 0px 0px 20px;
+}
+
+header .menu_side h4 {
+    font-size: 15px;
+    font-weight: 1;
+    padding-bottom: 10px;
+    color: #4c5262;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: .3s;
+    width: 60%;
+}
+
+header .menu_side h4:hover {
+    color: white;
+}
+
+header .menu_side h4 span {
+    position: relative;
+    margin-right: 35px;
+}
+
+header .menu_side h4 span::before {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border: 2px solid #4c5262;
+    border-radius: 50%;
+    top: -4px;
+    transition: .3s linear;
+}
+
+header .menu_side h4:hover span::before {
+    border: 2px solid #fff;
+}
+
+header .menu_side .playlist h4 .bi {
+    display: none;
+}
+
+header .menu_side .playlist .active {
+    color: lightskyblue;
+}
+
+header .menu_side .playlist .active span{
+    display: none;
+}
+
+header .menu_side .playlist .active .bi{
+    display: flex;
+    margin-right: 20px;
+}
+
+header .menu_side .playlist2 {
+    margin-top: 30px;
+}
+
+header .menu_side .playlist2 h4{
+    margin-left: 30px;
+    margin-top: 10px;
+}
+header .menu_side .playlist2 .active{
+    color: lightskyblue;
+}
+
+header .menu_side .line1 {
+    width: 90%;
+    height: 1px;
+    border: 1px solid #4c5262;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+header .song_side .menu_song{
+    width: 81%;
+    height: 440px;
+    margin-top: 20px;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: #4c5262 transparent;
+}
+
+header .song_side .menu_song::-webkit-scrollbar{
+    width: 10px;
+}
+
+header .song_side .menu_song::-webkit-scrollbar-thumb{
+    background-color: #4c5262;
+}
+
+header .song_side .menu_song::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+header .song_side .line2 {
+    width: 77%;
+    height: 1px;
+    border: 1px solid #4c5262;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+header .song_side .menu_song li{
+    list-style-type: none;
+    position: relative;
+    padding: 5px 0px 5px 20px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;;
+    cursor: pointer;
+    transition: .3s linear;
+}
+
+header .song_side .menu_song li:hover{
+    background: rgb(105, 105, 105, .1)
+}
+
+header .song_side .menu_song li span{
+    font-size: 14px;
+    font-weight: 1;
+    color: #636877;
+}
+
+header .song_side .menu_song li img{
+    width: 32px;
+    height: 32px;
+    margin-left: 25px;
+    object-fit: cover;
+}
+
+header .song_side .menu_song li h5{
+    font-size: 14px;
+    font-weight: 1;
+    margin-left: 15px;
+    width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+header .song_side .menu_song li .subtitle{
+    font-size: 13px;
+    color: #4c5262;
+}
+
+#input_txt {
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 15px;
+    width: 28%;
+    border-radius: 30px;
+}
+
+nav ul {
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline;
+    padding: 9px 25px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    background-color: lightskyblue;
+    width: 0px;
+    height: 3px;
+    left: 0px;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+button {
+    border: none; 
+    border-radius: 40px; 
+    background-color: white; 
+    padding: 10px 30px;
+    font-size: 16px;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: lightskyblue;
+    color: white;
+    border: 3px lightskyblue;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 30px;
+    transition: 300ms ease-in-out;
+}
+
+.profile {
+    background-color: #1a1a1cf5;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    float: right;
+    height: 87.7%;
+    top: 1px;
+    right:1px;
+    width: 15%;
+}
+
+.profile img{
+    margin-top: 40px;
+    object-fit: cover;
+    width: 150px; 
+    height: 150px;
+}
+
+.profile .profile_disc {
+    padding-top: 300px;
+}
+
+header .master_play {
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+header .master_play .wave {
+    width: 30px;
+    height: 30px;
+    padding-bottom: 5px;
+    display: flex;
+    align-items: flex-end;
+    margin-right: 10px;
+}
+
+header .master_play .wave .wave1 {
+    width: 3px;
+    height: 10px;
+    background: lightskyblue;
+    margin-right: 3px;
+    border-radius: 10px 10px 0px 0px;
+    /*animation: wave .5s linear infinite;*/
+}
+
+header .master_play .wave .wave1:nth-child(2) {
+    height: 13px;
+    margin-right: 3.5px;
+    animation-delay: .4s;
+}
+
+header .master_play .wave .wave1:nth-child(3) {
+    height: 8px;
+    animation-delay: .8s;
+}
+
+/* JavaScript Classes */
+
+header .master_play .active1 .wave1{
+    animation: wave .5s linear infinite;
+}
+
+header .master_play .active1 .wave1:nth-child(2) {
+    animation-delay: .4s;
+}
+
+header .master_play .active1 .wave1:nth-child(3) {
+    animation-delay: .8s;
+}
+
+@keyframes wave {
+    0% {
+        height: 10px;
+    }
+    50% {
+        height: 15px;
+    }
+    100% {
+        height: 10px;
+    }
+}
+
+header .master_play img {
+    width: 35px;
+    height: 35px;
+    object-fit: cover;
+}
+
+header .master_play h5 {
+    width: 130px;
+    margin-left: 10px;
+    color: #fff;
+    line-height: 17px;
+    font-weight: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+header .master_play h5 .subtitle{
+    font-size: 11px;
+    color: #4c5262;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+header .master_play .icon{
+    font-size: 20px;
+    color: #fff;
+    margin: 0px 20px 0px 40px;
+    outline: none;
+    display: flex;
+    align-items: center;
+}
+
+header .master_play .icon .bi{
+    cursor: pointer;
+    outline: none;
+}
+
+header .master_play .icon .shuffle{
+    font-size: 17px;
+    margin-right: 10px;
+    width: 17.4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+header .master_play .icon .bi:nth-child(3) {
+    border: 1px solid rgb(105, 105, 105 .1);
+    border-radius: 50%;
+    padding: 1px 5px 0px 7px;
+    margin: 0px 5px;
+}
+
+header .master_play span {
+    color: #fff;
+    width: 32px;
+    font-size: 13px;
+    font-weight: 1;
+}
+
+header .master_play #currentStart {
+    margin: 0px 0px 0px 20px;
+}
+
+header .master_play .bar {
+    position: relative;
+    width: 40%;
+    height: 2px;
+    background: rgb(105, 105, 170, .1);
+    margin: 0px 15px 0px 10px;
+}
+
+header .master_play .bar .bar2 {
+    position: absolute;
+    background: rgba(95, 144, 175, 0.587);
+    width: 50%;
+    height: 100%;
+    top: 0;
+    transition: 1s linear;
+}
+
+header .master_play .bar .dot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: lightskyblue;
+    border-radius: 50%;
+    left: 0%;
+    top: -1.5px;
+}
+
+header .master_play .bar .dot::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 1px solid lightskyblue;
+    border-radius: 50%;
+    left: -7px;
+    top: -6.5px;
+    box-shadow: inset 0px 0px 3px lightskyblue;
+}
+
+header .master_play .bar input {
+    position: absolute;
+    width: 100%;
+    top: -7px;
+    left: 0;
+    cursor: pointer;
+    opacity: 0;
+
+}
+
+header .master_play .vol {
+    position: relative;
+    width: 100px;
+    height: 2px;
+    background: rgb(105, 105, 105, .1);
+    margin-left: 140px;
+}
+
+header .master_play .vol .bi {
+    position: absolute;
+    color: #fff;
+    font-size: 20px;
+    top:-9.7px;
+    left: -30px;
+}
+
+header .master_play .vol input {
+    position: absolute;
+    width: 100%;
+    top: -7px;
+    left: 0;
+    cursor: pointer;
+    opacity: 0;
+}
+
+header .master_play .vol .vol_bar {
+    position: absolute;
+    background: rgba(95, 144, 175, 0.587);;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    transition: 1s linear;
+}
+
+header .master_play .vol .dot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: lightskyblue;
+    border-radius: 50%;
+    left: 0%;
+    top: -1.5px;
+}
+
+header .master_play .vol .dot::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 1px solid lightskyblue;
+    border-radius: 50%;
+    left: -7px;
+    top: -6.5px;
+    box-shadow: inset 0px 0px 3px lightskyblue;
+}
+

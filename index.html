@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="style.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <title>SoundBoard</title>
+    </head>
+    <body>
+        <header>
+            <div class="menu_side">
+                <div class="playlist">
+                    <h4 class="active"><span></span><i class="bi bi-music-note-beamed"></i> Playlist</h4>
+                    <h4><span></span><i class="bi bi-music-note-beamed"></i> Últimas Ouvidas</h4>
+                    <h4><span></span><i class="bi bi-music-note-beamed"></i> Recomendado</h4>
+                </div>
+                <div class="line1"></div>
+                <div class="playlist2">
+                    <h4 class="active">Playlist 1</h4>
+                    <h4>Playlist 2</h4>
+                    <h4>Playlist 3</h4>
+                    <h4>Playlist 4</h4>
+                </div>
+            </div>
+            <div class="song_side">
+                <nav>
+                    <input type="text" id="input_txt" placeholder="Pesquisar">
+                    <ul>
+                        <li><a href="">Inicio</a></li>
+                        <li><a href="">Artistas</a></li>
+                        <li><a href="">Género</a></li>
+                    </ul>
+                    <button type="submit" onclick="">Premium</button>
+                </nav>
+                <div class="line2"></div>
+                <div class="menu_song">
+                    <li class="songItem">
+                        <span>01</span>
+                        <img src="img/Cesaria Evora.jpg" alt="">
+                        <h5>Sodade <br>
+                            <div class="subtitle">Cesária Évora</div>
+                        </h5>
+                    </li>
+                    <li class="songItem">
+                        <span>02</span>
+                        <img src="img/Ildo Lobo.jpg" alt="">
+                        <h5>Nós Morna <br>
+                            <div class="subtitle">Ildo Lobo</div>
+                        </h5>
+                    </li>
+                    <li class="songItem">
+                        <span>03</span>
+                        <img src="img/Tito Paris.jpg" alt="">
+                        <h5>Fica ma mi <br>
+                            <div class="subtitle">Tito Paris</div>
+                        </h5>
+                    </li>
+                    <li class="songItem">
+                        <span>04</span>
+                        <img src="img/Bau.jpg" alt="">
+                        <h5>Raquel <br>
+                            <div class="subtitle">Bau</div>
+                        </h5>
+                    </li>
+                    <li class="songItem">
+                        <span>05</span>
+                        <img src="img/Bana.jpg" alt="">
+                        <h5>Nha Fidjo Matcho <br>
+                            <div class="subtitle">Bana</div>
+                        </h5>
+                    </li>
+                    <li class="songItem">
+                        <span>06</span>
+                        <img src="img/Ildo Lobo.jpg" alt="">
+                        <h5>Amor e Mar <br>
+                            <div class="subtitle">Ildo Lobo</div>
+                        </h5>
+                    </li>
+                    <li class="songItem">
+                        <span>07</span>
+                        <img src="img/Cesaria Evora.jpg" alt="">
+                        <h5>Mar Azul <br>
+                            <div class="subtitle">Cesária Evora</div>
+                        </h5>
+                    </li>
+                    <li class="songItem">
+                        <span>08</span>
+                        <img src="img/Cesaria Evora.jpg" alt="">
+                        <h5>Angola <br>
+                            <div class="subtitle">Cesária Evora</div>
+                        </h5>
+                    </li>
+                    <li class="songItem">
+                        <span>09</span>
+                        <img src="img/Cesaria Evora.jpg" alt="">
+                        <h5>Miss Perfumado <br>
+                            <div class="subtitle">Cesária Evora</div>
+                        </h5>
+                    </li>
+                    <li class="songItem">
+                        <span>10</span>
+                        <img src="img/Ildo Lobo.jpg" alt="">
+                        <h5>Incondicional <br>
+                            <div class="subtitle">Ildo Lobo</div>
+                        </h5>
+                    </li>
+                    <li class="songItem">
+                        <span>11</span>
+                        <img src="img/Ildo Lobo.jpg" alt="">
+                        <h5>Pamodi <br>
+                            <div class="subtitle">Ildo Lobo</div>
+                        </h5>
+                    </li>
+                </div>
+                <div class="profile">
+                    <img src="img/225868739_4248215675292589_3954905744718671235_n.jpg">
+                    <h3>Marco Soares</h3>
+                    <div class="profile_disc">
+                        <h4>Assinante</h4>
+                        <h4>Seguidores: 1</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="master_play">
+                <div class="wave">
+                    <div class="wave1"></div>
+                    <div class="wave1"></div>
+                    <div class="wave1"></div>
+                </div>
+                <img src="Img/Cesaria Evora.jpg" alt="" id="poster_master_player">
+                <h5 id="title">
+                    Cesária Évora
+                    <div class="subtitle">Mar Azul</div>
+                </h5>
+                <div class="icon">
+                    <i class="bi shuffle bi-music-note-beamed">next</i>
+                    <i class="bi bi-skip-start-fill"></i>
+                    <i class="bi bi-play-fill"></i>
+                    <i class="bi bi-skip-end-fill"></i>
+                </div>
+                <span id="currentStart">0:00</span>
+                <div class="bar">
+                    <input type="range" id="seek" min="0" max="100">
+                    <div class="bar2" id="bar2"></div>
+                    <div class="dot"></div>
+                </div>
+                <span class="currentEnd">0:30</span>
+                <div class="vol">
+                    <i class="bi bi-volume-down-fill" id="vol_icon"></i>
+                    <input type="range" min="0" max="100" id="vol">
+                    <div class="vol_bar"></div>
+                    <div class="dot" id="vol_dot"></div>
+                </div>
+            </div>
+        </header>
+    </body>
+</html>
