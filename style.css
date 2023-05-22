@@ -117,7 +117,7 @@ header .menu_side .row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #0c1328;
+    background: #111b39;
     border: 0.1px solid lightskyblue;
     margin-top: 10px;
     width: 90%;
@@ -133,13 +133,16 @@ header .menu_side .row input {
     font-size: 15px;
     color: white;
     padding-left: 10px;
-}
+    width: 0%;
+}   
 
 header .menu_side .row button {
     border: none;
+    position: relative;
     outline: none;
-    background: #0c1328;
+    background: transparent;
     font-size: 20px;
+    color: lightskyblue;
     padding: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
@@ -171,9 +174,9 @@ header .menu_side #playlist-container span{
     margin-right: 20px;
     padding-left: 4px;
     cursor: pointer;
-    font-size: 14px;
-    width: 7%;
-    height: 5%;
+    font-size: 17px;
+    width: 10%;
+    height: 10%;
     border-radius: 50%;
 }
 
@@ -219,7 +222,7 @@ header .song_side .line2 {
     margin-left: 20px;
     margin-top: 15px;
 }
-header .song_side .menu_song li{
+header .song_side .menu_song #root li{
     list-style-type: none;
     position: relative;
     padding: 5px 0px 5px 20px;
@@ -230,24 +233,18 @@ header .song_side .menu_song li{
     transition: .3s linear;
 }
 
-header .song_side .menu_song li:hover{
+header .song_side .menu_song #root li:hover{
     background: rgb(105, 105, 105, .1)
 }
 
-header .song_side .menu_song li span{
-    font-size: 14px;
-    font-weight: 1;
-    color: #636877;
-}
-
-header .song_side .menu_song li img{
+header .song_side .menu_song #root li img{
     width: 32px;
     height: 32px;
     margin-left: 25px;
     object-fit: cover;
 }
 
-header .song_side .menu_song li h5{
+header .song_side .menu_song #root li h5{
     font-size: 14px;
     font-weight: 1;
     margin-left: 15px;
@@ -257,7 +254,7 @@ header .song_side .menu_song li h5{
     white-space: nowrap;
 }
 
-header .song_side .menu_song li .subtitle{
+header .song_side .menu_song #root li .subtitle{
     font-size: 13px;
     color: #4c5262;
 }
@@ -266,8 +263,9 @@ header .song_side .menu_song li .subtitle{
     border: none;
     outline: none;
     padding: 10px;
+    padding-left: 20px;
     font-size: 15px;
-    width: 28%;
+    width: 38%;
     border-radius: 30px;
 }
 
