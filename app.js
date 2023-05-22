@@ -13,6 +13,25 @@ function add(){
         let span = document.createElement('span');
         span.innerHTML = "\u00d7";
         li.appendChild(span);
+        saveData();
     } 
     inputBox.value = "";
 }
+
+const list = document.getElementById("playlist-container");
+
+list.addEventListener('click', (e) =>{
+    if (e.target.tagName === 'SPAN') {
+        e.target.parentElement.remove();
+        saveData();
+    }
+}, false);
+
+function saveData() {
+    localStorage.setItem("Data", list.innerHTML);
+}
+
+function checkTask () {
+    list.innerHTML = localStorage.getItem("Data");
+}
+checkTask();
