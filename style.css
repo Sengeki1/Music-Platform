@@ -113,16 +113,74 @@ header .menu_side .playlist .active .bi{
     margin-right: 20px;
 }
 
-header .menu_side .playlist2 {
-    margin-top: 30px;
+header .menu_side .row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0c1328;
+    border: 0.1px solid lightskyblue;
+    margin-top: 10px;
+    width: 90%;
+    height: 6%;
+    margin-left: 10px;
 }
 
-header .menu_side .playlist2 h4{
-    margin-left: 30px;
-    margin-top: 10px;
+header .menu_side .row input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 15px;
+    color: white;
+    padding-left: 10px;
 }
-header .menu_side .playlist2 .active{
-    color: lightskyblue;
+
+header .menu_side .row button {
+    border: none;
+    outline: none;
+    background: #0c1328;
+    font-size: 20px;
+    padding: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+header .menu_side #playlist-container{
+    list-style: none;
+    color: #555;
+    font-size: 15px;
+    padding-top: 30px;
+    padding-left: 15px;
+    user-select: none;
+    cursor: pointer;
+    position: relative
+}
+
+header .menu_side #playlist-container li {
+    margin-bottom: 15px;
+}
+
+header .menu_side #playlist-container li:hover {
+    color: white;
+    transition: .1s linear;
+}
+
+header .menu_side #playlist-container span{
+    color: #555;
+    float: right;
+    margin-right: 20px;
+    padding-left: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 7%;
+    height: 5%;
+    border-radius: 50%;
+}
+
+header .menu_side #playlist-container span:hover{
+    background: white;
+    border: 1px solid white;
+    transition: .3s linear;
 }
 
 header .menu_side .line1 {
