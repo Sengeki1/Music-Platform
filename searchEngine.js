@@ -73,7 +73,7 @@ document.getElementById('input_txt').addEventListener('keyup', (e) => {
     const searchData = e.target.value.toLowerCase();
     const filterData = categories.filter((item) => {
         return(
-            item.nameOfSong.toLocaleLowerCase().includes(searchData)
+            item.nameOfSong.toLocaleLowerCase().includes(searchData) || item.title.toLocaleLowerCase().includes(searchData)
         )
     })
     displayItem(filterData)
