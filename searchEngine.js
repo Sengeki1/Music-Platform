@@ -84,6 +84,7 @@ const displayItem = (items) => {
         var {id, image, title, nameOfSong} = item;
         return(
             `<li class="songItem">
+                <i class="bi playList bi-play-fill" id="${id}"></i>
                 <span>${id}</span>
                 <img src="${image}">
                 <h5>${nameOfSong}
