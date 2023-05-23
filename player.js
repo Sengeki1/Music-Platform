@@ -94,6 +94,20 @@ masterPlay.addEventListener('click', () => {
 let index = 0;
 let poster_master_play = document.getElementById('poster_master_player');
 let title = document.getElementById('title');
+
+const makeAllPlays = () => {
+    Array.from(document.getElementsByClassName('playList')).forEach((el) => {
+        el.classList.add('bi-play-fill');
+        el.classList.remove('bi-pause-fill');  
+    });
+}
+
+const makeAllBackground = () => {
+    Array.from(document.getElementsByClassName('songItem')).forEach((e) => {
+        e.style.background = 'rgb(105, 105, 105, .0)';
+    })
+}
+
 Array.from(document.getElementsByClassName('playList')).forEach((e) => {
     e.addEventListener('click', (al) => {
         index = al.target.id;
@@ -114,6 +128,10 @@ Array.from(document.getElementsByClassName('playList')).forEach((e) => {
             wave.classList.remove('active1');
         }
 
+        makeAllPlays();
+        el.target.classList.remove('bi-play-fill');
+        el.target.classList.add('bi-pause-fill');
+
         let songTitles = songsPlayer.filter((els) => {
             return els.id == index;
         });
@@ -121,7 +139,9 @@ Array.from(document.getElementsByClassName('playList')).forEach((e) => {
         songTitles.forEach(elss => {
             let {songName} = elss;
             title.innerHTML = songName;
-        })
+        });
 
-    })
+        makeAllBackground();
+        Array.from(document.getElementsByClassName('songItem'))[index - 1].style.background = "rgb(105, 105, 105, .1)"});
+
 });
