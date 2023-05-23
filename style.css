@@ -196,7 +196,7 @@ header .menu_side .line1 {
 
 header .song_side .menu_song{
     width: 81%;
-    height: 440px;
+    height: 460px;
     margin-top: 20px;
     overflow-y: scroll;
     scrollbar-width: thin;
@@ -252,6 +252,11 @@ header .song_side .menu_song #root li h5{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+header .song_side .menu_song #root li span {
+    color: #555;
+    font-size: 15px;
 }
 
 header .song_side .menu_song #root li .subtitle{
