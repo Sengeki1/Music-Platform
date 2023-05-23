@@ -1,6 +1,6 @@
-const music = new Audio('audio/Cesária Evora/Sodade.mp3');
+const music = new Audio('audio/01.mp3');
 
-const songsPlayer = [
+/*const songsPlayer = [
     {
         id: '01',
         songName: `Sodade <br>
@@ -67,7 +67,7 @@ const songsPlayer = [
         <div class="subtitle">Ildo Lobo</div>`,
         poster: "img/Ildo Lobo.jpg"
     }
-]
+]*/
 
 /*Array.from(document.getElementsByClassName('songItem')).forEach((e, i) => {
     e.getElementsByTagName('img')[0].src = songsPlayer[i].poster;
@@ -89,4 +89,24 @@ masterPlay.addEventListener('click', () => {
         masterPlay.classList.add('bi-play-fill')
         masterPlay.classList.remove('bi-pause-fill');
     }
+});
+
+let index = 0;
+
+Array.from(document.getElementsByClassName('playList')).forEach((e) => {
+    e.addEventListener('click', (el) => {
+        index = el.target.id;
+        music.src = `audio/${index}.mp3`;
+        if (music.paused || music.currentTime <= 0){
+            music.play();
+            wave.classList.add('active1');
+            masterPlay.classList.remove('bi-play-fill');
+            masterPlay.classList.add('bi-pause-fill');
+        } else {
+            music.pause();
+            wave.classList.remove('active1');
+            masterPlay.classList.add('bi-play-fill');
+            masterPlay.classList.remove('bi-pause-fill');
+        }
+    })
 })
