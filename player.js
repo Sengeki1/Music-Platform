@@ -1,5 +1,4 @@
 const music = new Audio('audio/Cesária Evora/Sodade.mp3');
-//music.play();
 
 const songsPlayer = [
     {
@@ -40,9 +39,9 @@ const songsPlayer = [
     },
     {
         id: '07',
-        image: 'img/Cesaria Evora.jpg',
-        title: 'Cesária Évora',
-        nameOfSong: 'Mar Azul'
+        songName: `Mar Azul <br>
+        <div class="subtitle">Cesária Évora</div>`,
+        poster: "img/Cesaria Evora.jpg"
     },
     {
         id: '08',
@@ -69,3 +68,18 @@ const songsPlayer = [
         poster: "img/Ildo Lobo.jpg"
     }
 ]
+
+Array.from(document.getElementsByClassName('songItem')).forEach((e, i) => {
+    e.getElementsByTagName('img')[0].src = songsPlayer[i].poster;
+    e.getElementsByTagName('img')[0].innerHTML = songsPlayer[i].songName;
+});
+
+let masterPlay = document.getElementById('masterPlay');
+
+masterPlay.addEventListener('click', () => {
+    if (music.paused || music.currentTime <= 0){
+        music.play();
+    } else {
+
+    }
+})
