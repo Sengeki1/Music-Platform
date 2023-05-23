@@ -259,6 +259,10 @@ header .song_side .menu_song #root li span {
     font-size: 15px;
 }
 
+header .song_side .menu_song #root li i {
+    padding-right: 20px;
+}
+
 header .song_side .menu_song #root li .subtitle{
     font-size: 13px;
     color: #4c5262;
