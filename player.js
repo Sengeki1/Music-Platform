@@ -74,11 +74,12 @@ const songsPlayer = [
     e.getElementsByTagName('img')[0].innerHTML = songsPlayer[i].songName;
 });*/
 
+// Player
 let masterPlay = document.getElementById('masterPlay');
 let wave = document.getElementById('wave');
 
 masterPlay.addEventListener('click', () => {
-    if (music.paused || music.currentTime < 0){
+    if (music.paused || music.currentTime <= 0){
         music.play();
         wave.classList.add('active1');
         masterPlay.classList.remove('bi-play-fill')
@@ -102,6 +103,7 @@ const makeAllPlays = () => {
     });
 }
 
+// javascript style 
 const makeAllBackground = () => {
     Array.from(document.getElementsByClassName('songItem')).forEach((e) => {
         e.style.background = 'rgb(105, 105, 105, .0)';
@@ -120,7 +122,7 @@ Array.from(document.getElementsByClassName('playList')).forEach((e) => {
         poster_master_play.src = `img/${index}.jpg`;
         masterPlay.classList.remove('bi-play-fill');
         masterPlay.classList.add('bi-pause-fill');
-        if (music.paused || music.currentTime < 0){
+        if (music.paused || music.currentTime <= 0){
             music.play();
             wave.classList.add('active1');
         } else {
@@ -142,6 +144,27 @@ Array.from(document.getElementsByClassName('playList')).forEach((e) => {
         });
 
         makeAllBackground();
-        Array.from(document.getElementsByClassName('songItem'))[index - 1].style.background = "rgb(105, 105, 105, .1)"});
+        Array.from(document.getElementsByClassName('songItem'))[index - 1].style.background = "rgb(105, 105, 105, .1)"
+    });
+})
 
-});
+// Player timer
+let currentStart = document.getElementById('currentStart');
+let currentEnd = document.getElementById('currentEnd');
+
+music.addEventListener('timeupdate', () => {
+    let music_curr = music.currentTime;
+    let music_dur = music.duration;
+
+    let min1 = Math.floor(music_dur / 60);
+    let sec1 = Math.floor(music_dur % 60);
+    currentEnd.innerText = `${min1}:${sec1}`;
+
+    let min2 = Math.floor(music_curr / 60);
+    let sec2 = Math.floor(music_curr % 60);
+    currentStart.innerText = `${min2}:${sec2}`;
+
+    if(sec2 < 10){
+        sec2 = `0${sec2}`;
+    }
+})
