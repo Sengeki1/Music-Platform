@@ -231,7 +231,6 @@ header .song_side .menu_song #root li{
     margin-bottom: 10px;;
     cursor: pointer;
     transition: .3s linear;
-    background: rgb(105, 105, 105, .0)
 }
 
 header .song_side .menu_song #root li:hover{
