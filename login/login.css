@@ -1,0 +1,59 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(90deg, orange, red);
+    margin: auto;
+}
+form{
+    width: 350px;
+    height: 370px;
+    margin: 130px auto;
+    background-color: orange;
+    text-align: center;
+    border-radius: 12px;
+}
+form h1{
+    margin: 50px;
+    padding-top: 20px;
+}
+form:checked{
+    background-color: red;
+    margin-top: 40px;
+}
+.input{
+    display: block;
+    margin: 20px auto;
+    padding: 13px;
+    border-radius: 12px;
+    font-size: 23px;
+    font-family: 'Times New Roman', Times, serif;
+    border: none;
+    outline: none;
+}
+
+::placeholder{
+    font-size: 23px;
+}
+
+#registrar{
+    left: 50px;
+    text-align: left;
+}
+
+#btn_logar{
+    height: 35px;
+    width: 90px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 19px;
+    border: none;
+}
+
+#btn_logar:hover{
+    background-color: orangered;
+    font-size: 19px;
+    text-decoration: crimson;
+    font-family: 'Times New Roman', Times, serif;
+}
