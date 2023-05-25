@@ -252,4 +252,43 @@ back.addEventListener('click', () => {
     el.target.classList.remove('bi-play-fill');
     el.target.classList.add('bi-pause-fill');
     wave.classList.add('active1');
-})
+});
+
+next.addEventListener('click', () => {
+    index++;
+    if (index > Array.from(document.getElementsByClassName('songItem')).length){
+        index = 1;
+        index = `0${index}`;
+    } else if (index > 9){
+        index = `${index}`;
+    }else index = `0${index}`;
+
+    music.src = `audio/${index}.mp3`;
+    poster_master_play.src = `img/${index}.jpg`;
+    masterPlay.classList.remove('bi-play-fill');
+    masterPlay.classList.add('bi-pause-fill');
+    if (music.paused || music.currentTime <= 0){
+        music.play();
+        wave.classList.add('active1');
+    } else {
+        music.pause();
+        wave.classList.remove('active1');
+    }
+
+    let songTitles = songsPlayer.filter((els) => {
+        return els.id == index;
+    });
+
+    songTitles.forEach(elss => {
+        let {songName} = elss;
+        title.innerHTML = songName;
+    });
+
+    makeAllBackground();
+    Array.from(document.getElementsByClassName('songItem'))[index - 1].style.background = "rgb(105, 105, 105, .1)"
+    
+    makeAllPlays();
+    el.target.classList.remove('bi-play-fill');
+    el.target.classList.add('bi-pause-fill');
+    wave.classList.add('active1');
+});
