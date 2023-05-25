@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="registrar.css">
+
+    <title>Registrar</title>
+</head> 
+<body>  
+    <form onsubmit="return false">
+        <h1>Criar Conta</h1>
+        <input type="text" placeholder="Nome" id="nome" required><br>
+        <input type="text" placeholder="Sobrenome" id="sobrenome" required><br>
+        <input type="email" placeholder="Email"  id="email" required><br>
+        <input type="password" placeholder="Senha" id="senha" required><br>
+        <input type="password" placeholder="Confirmar Senha" id="confirm_senha" required><br>
+        <button id="button" onclick="registrar()">Registrar</button>
+    </form>
+
+    <script src="registrar.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+body{
+    background: linear-gradient(90deg, orange, red);
+}
+form{
+    position: static;
+    background-color: orange;
+    width: 350px;
+    height: 525px;
+    text-align: center;
+    margin: auto;
+    margin-top: 60px;
+    border-radius: 12px;
+    padding-top: 18px;
+
+}
+input::placeholder{
+    text-align: left;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+input{
+    padding: 15px;
+    margin: 9px;
+    width: 250px;
+    border-radius: 12px;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
+    outline: none;
+}
+
+#button{
+    margin-top: 10px;
+    border-radius: 12px;
+    padding: 10px;
+    width: 100px;
+    font-size: 19px;
+    border: none;
+    font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+}
+
+#button:hover{
+    background-color: orangered;
+    font-size: 19px;
+    text-decoration: crimson;
+    font-family: 'Times New Roman', Times, serif;
+}
