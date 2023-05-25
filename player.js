@@ -2,67 +2,78 @@ const music = new Audio('audio/01.mp3');
 
 const songsPlayer = [
     {
-        id: '01',
+        id: 1,
+        n: '01',
         songName: `Sodade <br>
         <div class="subtitle">Cesária Évora</div>`,
-        poster: "img/01.jpg"
+        poster: "img/1.jpg"
     },
     {
-        id: '02',
+        id: 2,
+        n: '02',
         songName: `Nós Morna <br>
         <div class="subtitle">Ildo Lobo</div>`,
-        poster: "img/02.jpg"
+        poster: "img/2.jpg"
     },
     {
-        id: '03',
+        id: 3,
+        n: '03',
         songName: `Fica ma mi <br>
         <div class="subtitle">Tito Paris</div>`,
-        poster: "img/03.jpg"
+        poster: "img/3.jpg"
     },
     {
-        id: '04',
+        id: 4,
+        n: '04',
         songName: `Raquel <br>
         <div class="subtitle">Bau</div>`,
-        poster: "img/04.jpg"
+        poster: "img/4.jpg"
     },
     {
-        id: '05',
+        id: 5,
+        n: '05',
         songName: `Nha Fidjo Matcho <br>
         <div class="subtitle">Bana</div>`,
-        poster: "img/05.jpg"
+        poster: "img/5.jpg"
     },
     {
-        id: '06',
+        id: 6,
+        n: '06',
         songName: `Amor e Mar <br>
         <div class="subtitle">Ildo Lobo</div>`,
-        poster: "img/06.jpg"
+        poster: "img/6.jpg"
     },
     {
-        id: '07',
+        id: 7,
+        n: '07',
         songName: `Mar Azul <br>
         <div class="subtitle">Cesária Évora</div>`,
-        poster: "img/07.jpg"
+        poster: "img/7.jpg"
     },
     {
-        id: '08',
+        id: 8,
+        n: '08',
         songName: `Angola <br>
         <div class="subtitle">Cesária Évora</div>`,
-        poster: "img/08.jpg"
+        poster: "img/8.jpg"
     },
     {
-        id: '09',
+        id: 9,
+        n: '09',
         songName: `Miss Perfumado <br>
         <div class="subtitle">Cesária Évora</div>`,
-        poster: "img/09.jpg"
+        poster: "img/9.jpg"
     },
     {
-        id: '10',
+        id: 10,
+        n: '10',
         songName: `Incondicional <br>
         <div class="subtitle">Ildo Lobo</div>`,
         poster: "img/10.jpg"
     },
     {
-        id: '11',
+        id: 11,
+        n: '11',
         songName: `Pamodi <br>
         <div class="subtitle">Ildo Lobo</div>`,
         poster: "img/11.jpg"
@@ -79,11 +90,11 @@ const categories = [...new Set(songsPlayer.map((item) => {return item}))]
 
 const displayItem = (items) => {
     document.getElementById('root').innerHTML = items.map((item) => {
-        var {id, poster, songName} = item;
+        var {n ,id, poster, songName} = item;
         return(
             `<li class="songItem">
                 <i class="bi playList bi-play-fill" id="${id}"></i>
-                <span>${id}</span>
+                <span>${n}</span>
                 <img src="${poster}" alt="">
                 <h5>
                     ${songName}
@@ -237,13 +248,11 @@ vol.addEventListener('change', () => {
 let back = document.getElementById('back');
 let next = document.getElementById('next');
 
-back.addEventListener('click', () => {
+back.addEventListener('click', (el) => {
     index -= 1;
     if (index < 1){
         index = Array.from(document.getElementsByClassName('songItem')).length;
-    } else if (index == 10){
-        index = 10;
-    }else index = `0${index}`;
+    } 
 
     music.src = `audio/${index}.mp3`;
     poster_master_play.src = `img/${index}.jpg`;
@@ -268,18 +277,15 @@ back.addEventListener('click', () => {
 
     makeAllBackground();
     Array.from(document.getElementsByClassName('songItem'))[index - 1].style.background = "rgb(105, 105, 105, .1)"
-    
-    makeAllPlays();
+   
+    makeAllPlays(); 
 });
 
 next.addEventListener('click', () => {
     index++;
     if (index > Array.from(document.getElementsByClassName('songItem')).length){
         index = 1;
-        index = `0${index}`;
-    } else if (index > 9){
-        index = `${index}`;
-    }else index = `0${index}`;
+    }
 
     music.src = `audio/${index}.mp3`;
     poster_master_play.src = `img/${index}.jpg`;
