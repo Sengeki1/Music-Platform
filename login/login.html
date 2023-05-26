@@ -1,32 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-pt">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
-    
-    <title>Login</title>
-</head>
-<body>  
-    <div> 
-        <form onsubmit="return false">
-            <div><h1>Login</h1></div>
-            <div>
-                <input type="email" placeholder="E-mail" id="email" class="input" required>
-                <!--<small id="textEmail"></small>-->
-                <input type="password" placeholder="Senha" id="senha" class="input" required>
-            </div>
-            <div>
-                <h4><a href="registrar.html" target="_blank" rel="next" id="registrar" >Registrar primeiro!</a></h4>
-                <button onclick='logar()' id="btn_logar">Logar</button>
-            </div>
-            
-        </form>
-    </div>
-    
-    
+<html>
+  <head>
+    <link href="login.css" rel="stylesheet"/>
+    <title>Sign Up Page</title>
+    <script src="https://kit.fontawesome.com/4e4c23d5e2.js" crossorigin="anonymous"></script>
     <script src="login.js"></script>
-    
-</body>
+    <script src="../sweetAlert.js"></script>
+  </head>
+  <body>
+    <section class="overlay">
+      <div class="header">
+        <h1>Sign In</h1>
+        <p>Login an account:</p>
+      </div>
+      <form id="login" onsubmit="return false">
+        <br>
+        <label for="email"></label>
+        <i class="fa-solid fa-envelope"></i>
+        <input id="email" name="email" type="email" placeholder="E-mail" oninput="checker()">
+        <div id="icon2">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <br>
+        <label for="pw"></label>
+        <i class="fa-solid fa-lock"></i>
+        <input id="pw" name="pw" type="password" placeholder="Password">
+        <br>
+        <br>
+        <input class='button' type="submit" value="Login" onclick="myfun()">
+      </form> 
+      <div class="sign-up">
+        <p>
+          Don't have an account? <a href="../register/registrar.html">Sign Up</a>
+        </p>
+      </div>
+    </section>
+  </body>
 </html>
