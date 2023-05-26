@@ -1,48 +1,136 @@
-body{
-    background: linear-gradient(90deg, orange, red);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-form{
-    position: static;
-    background-color: orange;
-    width: 350px;
-    height: 525px;
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: url('../img/wallpaperflare.com_wallpaper.jpg');
+    position: relative;
+}
+
+.overlay {
+    width: 90%;
+    max-width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    border: 3px solid white;
+    border-radius: 15px;
+    padding: 50px 60px 70px; 
     text-align: center;
-    margin: auto;
-    margin-top: 60px;
-    border-radius: 12px;
-    padding-top: 18px;
-
-}
-input::placeholder{
-    text-align: left;
-    font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
-}
-input{
-    padding: 15px;
-    margin: 9px;
-    width: 250px;
-    border-radius: 12px;
-    border: none;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: large;
-    outline: none;
+    font-family: Arial, sans-serif;
 }
 
-#button{
+.header h1 {
+    font-weight: bold;
+    font-size: 23px;
+    color: black;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+#username {
+    border: 0.5px solid black;
+    border-radius: 0px 5px 5px 0px;
+    padding: 8px 10px;
+    font-size: 14px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+#email {
+    border: 0.5px solid black;
+    border-radius: 0px 5px 5px 0px;
+    padding: 8px 10px;
+    font-size: 14px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+#pw {
+    border: 0.5px solid black;
+    border-radius: 0px 5px 5px 0px;
+    padding: 8px 10px;
+    font-size: 14px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+#confirm-pw {
+    border: 0.5px solid black;
+    border-radius: 0px 5px 5px 0px;
+    padding: 8px 10px;
+    font-size: 14px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+#register .gender {
     margin-top: 10px;
-    border-radius: 12px;
-    padding: 10px;
-    width: 100px;
-    font-size: 19px;
-    border: none;
-    font-family: 'Times New Roman', Times, serif;
+    margin-right: 100px;
+    margin-bottom: 10px;
+}
+
+.button #click {
+    border: 3px black; 
+    border-radius: 40px; 
+    background-color: black; 
+    margin-top: 20px;
+    padding: 10px 40px;
+    font-size: 16px;
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
 }
 
-#button:hover{
-    background-color: orangered;
-    font-size: 19px;
-    text-decoration: crimson;
-    font-family: 'Times New Roman', Times, serif;
+.button #click:hover {
+    background-color: lightskyblue;
+    color: black;
+    border: 3px lightskyblue;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 40px;
+    transition: 300ms ease-in-out;
+}
+
+.sign-in {
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.sign-in a {
+    color: blue;
+}
+
+#register #input-field #icon1 {
+    position: absolute;
+    top: 36.2%;
+    right: 19%;
+}
+
+#register #input-field #icon2 {
+    position: absolute;
+    top: 57%;
+    right: 19%;
+}
+
+#register .check-box {
+    position: relative;
+    margin-top: 5px;
+    margin-right: 95px;
+    padding: 10px;
+    font-size: 15px;
+}
+
+#register #input-field #error {
+    position: relative;
+    font-size: 11px;
+    text-align: justify;
+    margin-left: 24px;
+    margin-top: 10px;
 }
