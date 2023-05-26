@@ -1,25 +1,71 @@
 <!DOCTYPE html>
-<html lang="pt-pt">
-<head> 
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="registrar.css">
-
-    <title>Registrar</title>
-</head> 
-<body>  
-    <form onsubmit="return false">
-        <h1>Criar Conta</h1>
-        <input type="text" placeholder="Nome" id="nome" required><br>
-        <input type="text" placeholder="Sobrenome" id="sobrenome" required><br>
-        <input type="email" placeholder="Email"  id="email" required><br>
-        <input type="password" placeholder="Senha" id="senha" required><br>
-        <input type="password" placeholder="Confirmar Senha" id="confirm_senha" required><br>
-        <button id="button" onclick="registrar()">Registrar</button>
-    </form>
-
+    <title>Register</title>
+    <script src="https://kit.fontawesome.com/4e4c23d5e2.js" crossorigin="anonymous"></script>
     <script src="registrar.js"></script>
-
+    <script src="../sweetAlert.js"></script>
+    <link href="registrar.css" rel="stylesheet">
+</head>
+<body>
+    <section class="overlay">
+        <div class="header">
+            <h1>Sign Up</h1>
+            <p>Register an account:</p>
+        </div>
+        <br>
+        <form id="register" onsubmit="return false">
+            <div id="input-field">
+                <label for="username"></label>
+                <i class="fa-solid fa-user"></i>
+                <input id="username" name="username" type="text" placeholder="Username">
+            </div>
+            <div id="input-field">
+                <label for="email"></label>
+                <i class="fa-solid fa-envelope"></i>
+                <input id="email" name="email" type="email" placeholder="Email" oninput="validation()">
+                <div id="icon1">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+            </div>
+            <div id="input-field">
+                <label for="pw"></label>
+                <i class="fa-solid fa-lock"></i>
+                <input id="pw" name="pw" type="password" placeholder="Password" oninput="check()">
+                <p id="error">Must have at least 8 characters</p>
+            </div>
+            <div id="input-field">
+                <label for="confirm-pw"></label>
+                <i class="fa-solid fa-lock"></i>
+                <input id="confirm-pw" name="confirm-pw" type="password" placeholder="Confirm Password" oninput="confirm()">
+                <div id="icon2">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+            </div>
+            <div class="check-box">
+                <input id="show" name="show" type="checkbox" value="password" onclick="see()">
+                <label for="show">Show Password</label>
+            </div>
+            <section class="gender">
+                <span>gender: </span>
+                <input id="m" name="sex" type="radio" value="yes">
+                <label for="sex">M</label>
+                <input id="f" name="sex" type="radio" value="yes">
+                <label for="sex">F</label>
+            </section>
+            <div class="button">
+                <label for="click"></label>
+                <input id="click" name="click" type="submit" value="Register" onclick="myfun()">
+            </div>
+        </form>
+        <div class="sign-in">
+            <p>
+                Already have an account? <a href="../login/login.html">Sign In</a>
+            </p>
+        </div>
+    </section>
 </body>
 </html>
