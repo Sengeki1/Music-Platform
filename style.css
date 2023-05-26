@@ -345,6 +345,14 @@ button:hover {
     width: 15%;
 }
 
+header .song_side .profile i{
+    position: relative;
+    font-size: 25px;
+    top: 20px;
+    right: 5px;
+    cursor: pointer;
+}
+
 .profile img{
     margin-top: 40px;
     object-fit: cover;
