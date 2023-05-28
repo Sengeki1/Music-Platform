@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="payment.js"></script>
+    <script src="../sweetAlert.js"></script>
     <title>Complete your purchase</title>
 </head>
 <body>
@@ -21,19 +23,19 @@
             </div>
             <div class="input-line">
                 <label for="name">Card number</label>
-                <input type="text" name="name" id="name" placeholder="1111-2222-3333-4444" maxlength="16">
+                <input type="text" name="name" id="card" placeholder="1111-2222-3333-4444" maxlength="16">
             </div>
             <div class="input-container">
                 <div class="input-line">
                     <label for="name">Expiring Date</label>
-                    <input type="text" name="name" id="name" placeholder="09-21" maxlength="5">
+                    <input type="text" name="name" id="date" placeholder="09-21" maxlength="5">
                 </div>
                 <div class="input-line">
                     <label for="name">CVC</label>
-                    <input type="text" name="name" id="name" placeholder="***" maxlength="3">
+                    <input type="text" name="name" id="cvc" placeholder="***" maxlength="3">
                 </div>
             </div>
-            <input type="button" value="Complete purchase">
+            <input type="button" value="Complete purchase" onclick="myfun()">
         </form>
     </div>
 </body>
