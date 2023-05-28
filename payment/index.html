@@ -5,83 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>completar your porchase</title>
+    <title>Complete your purchase</title>
 </head>
-
 <body>
-
-
-     <header>
+    <header>
         <h1 class="logo">Payment</h1>
-     </header>
-        <div class="progress-step-container"></div>
-            <div class="step-check"></div>
-            <div class="step-title">shipping</spam>
         </div>
-        <div class="progress-step-container"></div>
-        <div class="step-check"></div>
-        <div class="step-title">shipping</spam>
-    </div>
-    <div class="progress-step-container"></div>
-        <div class="step-check"></div>
-        <div class="step-title">review</spam>
-    </div>
-
-<div>
-<div class="form-container">
-    <h2 class="form-title">payment details</h2>
-    <form action="" class="checkout-form">
-        <div class="input.line">
-            <label for="name">Name on card</label>
-            <input type="text" name="name" id="name" placeholder="your name and surname">
-        </div>
-        <div class="input.line">
-            <label for="card">Card number</label>
-            <input type="text" name="card" id="card" placeholder="1111-2222-3333">
-        </div>
-        <div class="input-container">
-            <div class="input.line">
-                <label for="date">Expering Data</label>
-                <input type="text" name="date" id="date" placeholder="09-21">
+    </header>
+    <div class="form-container">
+        <h2 class="form-title">Payment Details</h2>
+        <form action="" class="checkout-form">
+            <div class="input-line">
+                <label for="name">Name on card</label>
+                <input type="text" name="name" id="name" placeholder="Your name and surname" maxlength="25">
             </div>
-            <div class="input.line">
-                <label for="cvc">Expering Data</label>
-                <input type="text" name="cvc" id="cvc" placeholder="***">
+            <div class="input-line">
+                <label for="name">Card number</label>
+                <input type="text" name="name" id="name" placeholder="1111-2222-3333-4444" maxlength="16">
             </div>
-            
-        </div>
-        <input type="button" value="Complete purchase">
-    </form>
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+            <div class="input-container">
+                <div class="input-line">
+                    <label for="name">Expiring Date</label>
+                    <input type="text" name="name" id="name" placeholder="09-21" maxlength="5">
+                </div>
+                <div class="input-line">
+                    <label for="name">CVC</label>
+                    <input type="text" name="name" id="name" placeholder="***" maxlength="3">
+                </div>
+            </div>
+            <input type="button" value="Complete purchase">
+        </form>
+    </div>
 </body>
 </html>
