@@ -39,3 +39,7 @@ checkTask();
 document.getElementById('btn').addEventListener("click", function () {
     window.location.href="login/login.html"
 });
+
+function redirect() {
+    window.location.href="payment/index.html"
+}
