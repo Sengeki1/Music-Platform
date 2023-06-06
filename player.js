@@ -112,6 +112,11 @@ let clickIni = document.getElementById('ini');
 clickIni.addEventListener('click', () => {
     displayItem(categories);
 
+    const rootElement = document.getElementById('root');
+    rootElement.style.display = 'block';
+    rootElement.style.flexDirection = 'initial';
+
+
     const makeAllBackground = () => {
         Array.from(document.getElementsByClassName('songItem')).forEach((e) => {
             e.style.background = 'rgb(105, 105, 105, .0)';
@@ -162,14 +167,30 @@ clickIni.addEventListener('click', () => {
 let clickArtist = document.getElementById('art');
 
 clickArtist.addEventListener('click', () => {
-    const displayArtista = (items) => {
-        document.getElementById('root').innerHTML = items.map((item) => {
-            var {id, Artista, poster} = item;
-            return(``)
-        }).join('')
+    const uniqueArtists = [...new Set(songsPlayer.map(item => item.Artista))];
+
+    const displayArtists = (items) => {
+        const artistsMarkup = items.map(artist => {
+            const artistSongs = songsPlayer.filter(item => item.Artista === artist);
+            const { id, Artista, poster } = artistSongs[0];
+            return `
+                <div id="${id}" class="pop_song">
+                    <div>
+                        <img src="${poster}" alt="">
+                    </div>
+                    <span class="artist-name">${Artista}</span>
+                </div>`;
+        }).join('');
+
+        const rootElement = document.getElementById('root');
+        rootElement.style.display = 'flex';
+        rootElement.style.flexDirection = 'row';
+        rootElement.innerHTML = artistsMarkup;
     };
-    displayArtista(categories);
-})
+
+    displayArtists(uniqueArtists);
+});
+
 
 // Player
 let masterPlay = document.getElementById('masterPlay');
