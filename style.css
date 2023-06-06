@@ -56,6 +56,10 @@ header .song_side nav {
     padding-right: 20%;
 }
 
+header .song_side nav #art, #ini, #gen {
+    cursor: pointer;
+}
+
 header .menu_side .playlist {
     margin: 23px 0px 0px 20px;
 }
