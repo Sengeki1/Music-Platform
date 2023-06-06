@@ -404,6 +404,7 @@ next.addEventListener('click', () => {
     makeAllPlays();
 });
 
+// search bar
 document.getElementById('input_txt').addEventListener('keyup', (e) => {
     const searchData = e.target.value.toLowerCase();
     const filterData = categories.filter((item) => {
