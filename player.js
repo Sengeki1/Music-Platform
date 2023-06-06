@@ -175,8 +175,11 @@ clickArtist.addEventListener('click', () => {
             const { id, Artista, poster } = artistSongs[0];
             return `
                 <div id="${id}" class="pop_song">
-                    <div>
+                    <div class=artist>
                         <img src="${poster}" alt="">
+                        <div class="playListPlay">
+                            <i class="bi playListPlay bi-play-circle-fill id="${id}"></i>
+                        </div>
                     </div>
                     <span class="artist-name">${Artista}</span>
                 </div>`;
