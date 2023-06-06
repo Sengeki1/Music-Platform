@@ -1,4 +1,4 @@
-const music = new Audio('audio/01.mp3');
+const music = new Audio('audio/7.mp3');
 
 const songsPlayer = [
     {
