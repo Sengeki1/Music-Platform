@@ -409,6 +409,11 @@ next.addEventListener('click', () => {
 
 // search bar
 document.getElementById('input_txt').addEventListener('keyup', (e) => {
+    
+    const rootElement = document.getElementById('root');
+    rootElement.style.display = 'block';
+    rootElement.style.flexDirection = 'initial';
+
     const searchData = e.target.value.toLowerCase();
     const filterData = categories.filter((item) => {
         return(
