@@ -4,78 +4,78 @@ const songsPlayer = [
     {
         id: 1,
         n: '01',
-        songName: `Sodade <br>
-        <div class="subtitle">Cesária Évora</div>`,
+        songName: 'Sodade',
+        Artista: 'Cesária Évora',
         poster: "img/1.jpg"
     },
     {
         id: 2,
         n: '02',
-        songName: `Nós Morna <br>
-        <div class="subtitle">Ildo Lobo</div>`,
+        songName: 'Nós Morna',
+        Artista: 'Ildo Lobo',
         poster: "img/2.jpg"
     },
     {
         id: 3,
         n: '03',
-        songName: `Fica ma mi <br>
-        <div class="subtitle">Tito Paris</div>`,
+        songName: 'Fica ma mi',
+        Artista: 'Tito Paris',
         poster: "img/3.jpg"
     },
     {
         id: 4,
         n: '04',
-        songName: `Raquel <br>
-        <div class="subtitle">Bau</div>`,
+        songName: 'Raquel',
+        Artista: 'Bau',
         poster: "img/4.jpg"
     },
     {
         id: 5,
         n: '05',
-        songName: `Nha Fidjo Matcho <br>
-        <div class="subtitle">Bana</div>`,
+        songName: 'Nha Fidjo Matcho',
+        Artista: 'Bana',
         poster: "img/5.jpg"
     },
     {
         id: 6,
         n: '06',
-        songName: `Amor e Mar <br>
-        <div class="subtitle">Ildo Lobo</div>`,
+        songName: 'Amor e Mar',
+        Artista: 'Ildo Lobo',
         poster: "img/6.jpg"
     },
     {
         id: 7,
         n: '07',
-        songName: `Mar Azul <br>
-        <div class="subtitle">Cesária Évora</div>`,
+        songName: 'Mar Azul',
+        Artista: 'Cesária Évora',
         poster: "img/7.jpg"
     },
     {
         id: 8,
         n: '08',
-        songName: `Angola <br>
-        <div class="subtitle">Cesária Évora</div>`,
+        songName: 'Angola',
+        Artista: 'Cesária Évora',
         poster: "img/8.jpg"
     },
     {
         id: 9,
         n: '09',
-        songName: `Miss Perfumado <br>
-        <div class="subtitle">Cesária Évora</div>`,
+        songName: 'Miss Perfumado',
+        Artista: 'Cesária Évora',
         poster: "img/9.jpg"
     },
     {
         id: 10,
         n: '10',
-        songName: `Incondicional <br>
-        <div class="subtitle">Ildo Lobo</div>`,
+        songName: 'Incondicional',
+        Artista: 'Ildo Lobo',
         poster: "img/10.jpg"
     },
     {
         id: 11,
         n: '11',
-        songName: `Pamodi <br>
-        <div class="subtitle">Ildo Lobo</div>`,
+        songName: 'Pamodi',
+        Artista: 'Ildo Lobo',
         poster: "img/11.jpg"
     }
 ]
@@ -90,20 +90,86 @@ const categories = [...new Set(songsPlayer.map((item) => {return item}))]
 
 const displayItem = (items) => {
     document.getElementById('root').innerHTML = items.map((item) => {
-        var {n ,id, poster, songName} = item;
+        var {n ,id, poster, songName, Artista} = item;
         return(
             `<li class="songItem">
                 <i class="bi playList bi-play-fill" id="${id}"></i>
                 <span>${n}</span>
                 <img src="${poster}" alt="">
                 <h5>
-                    ${songName}
+                    ${songName} <br>
+                    <div class="subtitle">${Artista}</div>
                 </h5>
             </li>`
         )
     }).join('')
 };
 displayItem(categories);
+
+//display Inicio
+let clickIni = document.getElementById('ini');
+
+clickIni.addEventListener('click', () => {
+    displayItem(categories);
+
+    const makeAllBackground = () => {
+        Array.from(document.getElementsByClassName('songItem')).forEach((e) => {
+            e.style.background = 'rgb(105, 105, 105, .0)';
+        })
+    }
+    
+    Array.from(document.getElementsByClassName('playList')).forEach((e) => {
+        e.addEventListener('click', (al) => {
+            index = al.target.id;
+        })
+    });
+    Array.from(document.getElementsByClassName('playList')).forEach((e) => {
+        e.addEventListener('click', (el) => {
+            index = el.target.id;
+            music.src = `audio/${index}.mp3`;
+            poster_master_play.src = `img/${index}.jpg`;
+            masterPlay.classList.remove('bi-play-fill');
+            masterPlay.classList.add('bi-pause-fill');
+            if (music.paused || music.currentTime <= 0){
+                music.play();
+                wave.classList.add('active1');
+            } else {
+                music.pause();
+                wave.classList.remove('active1');
+            }
+    
+            makeAllPlays();
+            el.target.classList.remove('bi-play-fill');
+            el.target.classList.add('bi-pause-fill');
+    
+            let songTitles = songsPlayer.filter((els) => {
+                return els.id == index;
+            });
+    
+            songTitles.forEach(elss => {
+                let {songName, Artista} = elss;
+                title.innerHTML = `${songName} <br>
+                <div class="subtitle">${Artista}</div>`
+            });
+    
+            makeAllBackground();
+            Array.from(document.getElementsByClassName('songItem'))[index - 1].style.background = "rgb(105, 105, 105, .1)"
+        });
+    })
+})
+
+//display  Artistas
+let clickArtist = document.getElementById('art');
+
+clickArtist.addEventListener('click', () => {
+    const displayArtista = (items) => {
+        document.getElementById('root').innerHTML = items.map((item) => {
+            var {id, Artista, poster} = item;
+            return(``)
+        }).join('')
+    };
+    displayArtista(categories);
+})
 
 // Player
 let masterPlay = document.getElementById('masterPlay');
@@ -170,8 +236,9 @@ Array.from(document.getElementsByClassName('playList')).forEach((e) => {
         });
 
         songTitles.forEach(elss => {
-            let {songName} = elss;
-            title.innerHTML = songName;
+            let {songName, Artista} = elss;
+            title.innerHTML = `${songName} <br>
+            <div class="subtitle">${Artista}</div>`
         });
 
         makeAllBackground();
@@ -271,8 +338,9 @@ back.addEventListener('click', (el) => {
     });
 
     songTitles.forEach(elss => {
-        let {songName} = elss;
-        title.innerHTML = songName;
+        let {songName, Artista} = elss;
+        title.innerHTML = `${songName} <br>
+        <div class="subtitle">${Artista}</div>`;
     });
 
     makeAllBackground();
@@ -304,8 +372,9 @@ next.addEventListener('click', () => {
     });
 
     songTitles.forEach(elss => {
-        let {songName} = elss;
-        title.innerHTML = songName;
+        let {songName, Artista} = elss;
+        title.innerHTML = `${songName} <br>
+        <div class="subtitle">${Artista}</div>`;
     });
 
     makeAllBackground();
