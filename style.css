@@ -237,6 +237,27 @@ header .song_side .menu_song #root li{
     transition: .3s linear;
 }
 
+header .song_side .menu_song #root .pop_song {
+    position: relative;
+    text-align: center;
+    margin-left: 10px;
+    width: 30vh;
+    padding: 10px 10px 0px 10px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+    border: 1px solid rgba(93, 91, 91, 0.495);
+    border-radius: 3%;
+    background-color:#111b39;
+}
+
+header .song_side .menu_song #root .pop_song img{
+    width: 100%;
+    height: 150px;
+    border-radius: 3%;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
 header .song_side .menu_song #root li:hover{
     background: rgb(105, 105, 105, .1);
 }
