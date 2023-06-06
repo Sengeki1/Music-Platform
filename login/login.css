@@ -22,7 +22,9 @@
 }
 
 body {
-    background-image: url('../img/wallpaperflare.com_wallpaper.jpg');
+    background-image: url('../img/wallpaper2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .button {
