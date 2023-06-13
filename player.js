@@ -168,30 +168,99 @@ let clickArtist = document.getElementById('art');
 
 clickArtist.addEventListener('click', () => {
     const uniqueArtists = [...new Set(songsPlayer.map(item => item.Artista))];
+    let currentIndex = 0; // artist index
 
     const displayArtists = (items) => {
-        const artistsMarkup = items.map(artist => {
-            const artistSongs = songsPlayer.filter(item => item.Artista === artist);
-            const { id, Artista, poster } = artistSongs[0];
-            return `
-                <div id="${id}" class="pop_song">
-                    <div class=artist>
-                        <img src="${poster}" alt="">
-                        <div class="playListPlay">
-                            <i class="bi playListPlay bi-play-circle-fill id="${id}"></i>
-                        </div>
+    const artistsMarkup = items.map((artist, index) => {
+        const artists = songsPlayer.filter(item => item.Artista === artist);
+        const { id, Artista, poster } = artists[0];
+        return `
+            <div id="${id}" class="pop_song" data-index="${index}">
+                <div class="artist">
+                    <img src="${poster}" alt="">
+                    <div class="playListPlay">
+                        <i class="bi playListPlay bi-play-circle-fill" id="${id}"></i>
                     </div>
-                    <span class="artist-name">${Artista}</span>
-                </div>`;
+                </div>
+                <span class="artist-name">${Artista}</span>
+            </div>`;
         }).join('');
 
         const rootElement = document.getElementById('root');
         rootElement.style.display = 'flex';
         rootElement.style.flexDirection = 'row';
         rootElement.innerHTML = artistsMarkup;
+
+        // Update current index based on the current ID
+        const artistElements = document.querySelectorAll('.pop_song');
+        artistElements.forEach(artistElement => {
+            artistElement.addEventListener('click', () => {
+                currentIndex = parseInt(artistElement.dataset.index);
+                displaySongs(uniqueArtists);
+            });
+        });
     };
 
+    const displaySongs = (items) => {
+        const currentArtist = items[currentIndex]; // current Artist
+        const filterData = songsPlayer.filter(item => item.Artista === currentArtist);
+            const songs = filterData.map(song => {
+                const { n, id, poster, songName, Artista } = song;
+                    return `<li class="songItem">
+                                <i class="bi playList bi-play-fill" id="${id}"></i>
+                                <span>${n}</span>
+                                <img src="${poster}" alt="">
+                                <h5>
+                                    ${songName} <br>
+                                    <div class="subtitle">${Artista}</div>
+                                </h5>
+                            </li>`;
+                    }).join('');
+        const rootElement = document.getElementById('root');
+        rootElement.innerHTML = songs;
+
+        const playListElements = document.getElementsByClassName('playList');
+        Array.from(playListElements).forEach((playListElement) => {
+            playListElement.addEventListener('click', (el) => {
+                index = el.currentTarget.id;
+                music.src = `audio/${index}.mp3`;
+                poster_master_play.src = `img/${index}.jpg`;
+                masterPlay.classList.remove('bi-play-fill');
+                masterPlay.classList.add('bi-pause-fill');
+                if (music.paused || music.currentTime <= 0) {
+                music.play();
+                wave.classList.add('active1');
+                } else {
+                music.pause();
+                wave.classList.remove('active1');
+                }
+        
+                el.currentTarget.classList.remove('bi-play-fill');
+                el.currentTarget.classList.add('bi-pause-fill');
+        
+                let songTitles = songsPlayer.filter((els) => {
+                return els.id == index;
+                });
+        
+                songTitles.forEach((elss) => {
+                let { songName, Artista } = elss;
+                title.innerHTML = `${songName} <br>
+                                <div class="subtitle">${Artista}</div>`;
+                });
+            });
+        });
+    };
+    
     displayArtists(uniqueArtists);
+
+    Array.from(document.getElementsByClassName('playListPlay')).forEach((e) => {
+        e.addEventListener('click', () => {
+                
+            const rootElement = document.getElementById('root');
+            rootElement.style.display = 'block';
+            rootElement.style.flexDirection = 'initial';
+        });
+    })
 });
 
 
@@ -417,7 +486,7 @@ document.getElementById('input_txt').addEventListener('keyup', (e) => {
     const searchData = e.target.value.toLowerCase();
     const filterData = categories.filter((item) => {
         return(
-            item.songName.toLocaleLowerCase().includes(searchData)
+            item.songName.toLocaleLowerCase().includes(searchData) || item.Artista.toLocaleLowerCase().includes(searchData)
         )
     })
     displayItem(filterData)
@@ -445,8 +514,9 @@ document.getElementById('input_txt').addEventListener('keyup', (e) => {
             });
     
             songTitles.forEach(elss => {
-                let {songName} = elss;
-                title.innerHTML = songName;
+                let {songName, Artista} = elss;
+                title.innerHTML = `${songName} <br>
+                <div class="subtitle">${Artista}</div>`;
             });
     
             makeAllBackground();
