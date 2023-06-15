@@ -258,6 +258,41 @@ header .song_side .menu_song #root .pop_song img{
     margin-bottom: 10px;
 }
 
+header .song_side .menu_song #root .pop_song2 {
+    position: relative;
+    text-align: center;
+    margin-left: 10px;
+    width: 24vh;
+    padding: 10px 10px 0px 10px;
+    margin-right: 10px;
+    margin-left: 20px;
+    padding-bottom: 10px;
+    border: 1px solid rgba(93, 91, 91, 0.495);
+    border-radius: 3%;
+    background-color:#111b39;
+    cursor: pointer
+}
+
+header .song_side .menu_song #root .pop_song2 img{
+    width: 100%;
+    height: 150px;
+    border-radius: 3%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+header .song_side .menu_song #root .pop_song2 .playListPlay {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+    opacity: 0%;
+    padding-top: 50px;
+}
+
 header .song_side .menu_song #root .pop_song .playListPlay {
     position: absolute;
     top: 46%;
@@ -268,6 +303,18 @@ header .song_side .menu_song #root .pop_song .playListPlay {
     cursor: pointer;
     opacity: 0%;
     padding-top: 50px;
+}
+
+header .song_side .menu_song #root .pop_song2:hover {
+    background-color: #303958bb;
+    transition: .2s linear;
+}
+
+header .song_side .menu_song #root .pop_song2 .playListPlay:hover {
+    opacity: 100%;
+    color: lightseagreen;
+    font-size: 50px;
+    transition: .3s linear;
 }
 
 header .song_side .menu_song #root .pop_song:hover {
