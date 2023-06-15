@@ -6,77 +6,99 @@ const songsPlayer = [
         n: '01',
         songName: 'Sodade',
         Artista: 'Cesária Évora',
-        poster: "img/1.jpg"
+        poster: "img/1.jpg",
+        Genero: "Morna",
+        GenPoster: "img/Generos/morna.jpg"
     },
     {
         id: 2,
         n: '02',
         songName: 'Nós Morna',
         Artista: 'Ildo Lobo',
-        poster: "img/2.jpg"
+        poster: "img/2.jpg",
+        Genero: "Morna",
+        GenPoster: "img/Generos/morna.jpg"
     },
     {
         id: 3,
         n: '03',
         songName: 'Fica ma mi',
         Artista: 'Tito Paris',
-        poster: "img/3.jpg"
+        poster: "img/3.jpg",
+        Genero: "Morna",
+        GenPoster: "img/Generos/morna.jpg"
     },
     {
         id: 4,
         n: '04',
         songName: 'Raquel',
         Artista: 'Bau',
-        poster: "img/4.jpg"
+        poster: "img/4.jpg",
+        Genero: "Coladeira",
+        GenPoster: "img/Generos/Funana.jpeg"
     },
     {
         id: 5,
         n: '05',
         songName: 'Nha Fidjo Matcho',
         Artista: 'Bana',
-        poster: "img/5.jpg"
+        poster: "img/5.jpg",
+        Genero: "Morna",
+        GenPoster: "img/Generos/morna.jpg"
     },
     {
         id: 6,
         n: '06',
         songName: 'Amor e Mar',
         Artista: 'Ildo Lobo',
-        poster: "img/6.jpg"
+        poster: "img/6.jpg",
+        Genero: "Morna",
+        GenPoster: "img/Generos/morna.jpg"
     },
     {
         id: 7,
         n: '07',
         songName: 'Mar Azul',
         Artista: 'Cesária Évora',
-        poster: "img/7.jpg"
+        poster: "img/7.jpg",
+        Genero: "Coladeira",
+        GenPoster: "img/Generos/Funana.jpeg"
     },
     {
         id: 8,
         n: '08',
         songName: 'Angola',
         Artista: 'Cesária Évora',
-        poster: "img/8.jpg"
+        poster: "img/8.jpg",
+        Genero: "Morna",
+        GenPoster: "img/Generos/morna.jpg"
     },
     {
         id: 9,
         n: '09',
         songName: 'Miss Perfumado',
         Artista: 'Cesária Évora',
-        poster: "img/9.jpg"
+        poster: "img/9.jpg",
+        Genero: "Coladeira",
+        GenPoster: "img/Generos/Funana.jpeg"
     },
     {
         id: 10,
         n: '10',
         songName: 'Incondicional',
         Artista: 'Ildo Lobo',
-        poster: "img/10.jpg"
+        poster: "img/10.jpg",
+        Genero: "Morna",
+        GenPoster: "img/Generos/morna.jpg"
     },
     {
         id: 11,
         n: '11',
         songName: 'Pamodi',
         Artista: 'Ildo Lobo',
-        poster: "img/11.jpg"
+        poster: "img/11.jpg",
+        Genero: "Morna",
+        GenPoster: "img/Generos/morna.jpg"
     }
 ]
 
@@ -128,7 +150,7 @@ clickIni.addEventListener('click', () => {
             index = al.target.id;
         })
     });
-    
+
     Array.from(document.getElementsByClassName('playList')).forEach((e) => {
         e.addEventListener('click', (el) => {
             index = el.target.id;
@@ -164,7 +186,7 @@ clickIni.addEventListener('click', () => {
     })
 })
 
-//display  Artistas
+//display Artistas
 let clickArtist = document.getElementById('art');
 
 clickArtist.addEventListener('click', () => {
@@ -281,6 +303,36 @@ clickArtist.addEventListener('click', () => {
     })
 });
 
+// Display Music Gender
+const clickGen = document.getElementById('gen');
+clickGen.addEventListener('click', () => {
+    
+    const uniqueGenero = [...new Set(songsPlayer.map(item => item.Genero))];
+
+    const displayGenero = (items) => {
+    const artistsMarkup = items.map((artist, index) => {
+        const generos = songsPlayer.filter(item => item.Genero === artist);
+        const { id, Genero, GenPoster } = generos[0];
+        return `
+            <div id="${id}" class="pop_song2" data-index="${index}">
+                <div class="artist">
+                    <img src="${GenPoster}" alt="">
+                    <div class="playListPlay">
+                        <i class="bi playListPlay bi-play-circle-fill" id="${id}"></i>
+                    </div>
+                </div>
+                <span class="artist-name">${Genero}</span>
+            </div>`;
+        }).join('');
+
+        const rootElement = document.getElementById('root');
+        rootElement.style.display = 'flex';
+        rootElement.style.flexDirection = 'row';
+        rootElement.innerHTML = artistsMarkup;
+    }
+
+    displayGenero(uniqueGenero);
+})
 
 // Player
 let masterPlay = document.getElementById('masterPlay');
