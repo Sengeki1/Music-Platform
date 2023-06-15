@@ -43,3 +43,8 @@ document.getElementById('btn').addEventListener("click", function () {
 function redirect() {
     window.location.href="payment/index.html"
 }
+
+//Profile
+var username = localStorage.getItem("Username")
+var userName = document.getElementById('name1');
+userName.innerHTML = username;
