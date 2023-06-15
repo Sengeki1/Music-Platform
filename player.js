@@ -25,8 +25,8 @@ const songsPlayer = [
         songName: 'Fica ma mi',
         Artista: 'Tito Paris',
         poster: "img/3.jpg",
-        Genero: "Morna",
-        GenPoster: "img/Generos/morna.jpg"
+        Genero: "Coladeira",
+        GenPoster: "img/Generos/Funana.jpeg"
     },
     {
         id: 4,
@@ -61,8 +61,8 @@ const songsPlayer = [
         songName: 'Mar Azul',
         Artista: 'Cesária Évora',
         poster: "img/7.jpg",
-        Genero: "Coladeira",
-        GenPoster: "img/Generos/Funana.jpeg"
+        Genero: "Morna",
+        GenPoster: "img/Generos/morna.jpg"
     },
     {
         id: 8,
@@ -70,8 +70,8 @@ const songsPlayer = [
         songName: 'Angola',
         Artista: 'Cesária Évora',
         poster: "img/8.jpg",
-        Genero: "Morna",
-        GenPoster: "img/Generos/morna.jpg"
+        Genero: "Coladeira",
+        GenPoster: "img/Generos/Funana.jpeg"
     },
     {
         id: 9,
@@ -79,8 +79,8 @@ const songsPlayer = [
         songName: 'Miss Perfumado',
         Artista: 'Cesária Évora',
         poster: "img/9.jpg",
-        Genero: "Coladeira",
-        GenPoster: "img/Generos/Funana.jpeg"
+        Genero: "Morna",
+        GenPoster: "img/Generos/morna.jpg"
     },
     {
         id: 10,
@@ -244,7 +244,11 @@ clickArtist.addEventListener('click', () => {
 
         const makeAllBackground = () => {
             Array.from(document.getElementsByClassName('songItem')).forEach((e) => {
-                e.style.background = 'rgb(105, 105, 105, .0)';
+                if (i === currentIndex) {
+                    e.style.background = "rgb(105, 105, 105, .1)";
+                } else {
+                    e.style.background = "rgb(105, 105, 105, .0)";
+                }
             })
         }
 
@@ -303,36 +307,124 @@ clickArtist.addEventListener('click', () => {
     })
 });
 
-// Display Music Gender
+// Display Music Genre
 const clickGen = document.getElementById('gen');
 clickGen.addEventListener('click', () => {
-    
-    const uniqueGenero = [...new Set(songsPlayer.map(item => item.Genero))];
+    let currentIndex = 0; // Use let instead of const to make it mutable
+    const uniqueGenre = [...new Set(songsPlayer.map(item => item.Genero))];
 
     const displayGenero = (items) => {
-    const artistsMarkup = items.map((artist, index) => {
-        const generos = songsPlayer.filter(item => item.Genero === artist);
-        const { id, Genero, GenPoster } = generos[0];
-        return `
-            <div id="${id}" class="pop_song2" data-index="${index}">
-                <div class="artist">
-                    <img src="${GenPoster}" alt="">
-                    <div class="playListPlay">
-                        <i class="bi playListPlay bi-play-circle-fill" id="${id}"></i>
+        const artistsMarkup = items.map((genre, index) => { // Renamed artist to genre for clarity
+            const songsByGenre = songsPlayer.filter(item => item.Genero === genre);
+            const { id, Genero, GenPoster } = songsByGenre[0];
+            return `
+                <div id="${id}" class="pop_song2" data-index="${index}">
+                    <div class="artist">
+                        <img src="${GenPoster}" alt="">
+                        <div class="playListPlay">
+                            <i class="bi playListPlay bi-play-circle-fill" data-id="${id}"></i>
+                        </div>
                     </div>
-                </div>
-                <span class="artist-name">${Genero}</span>
-            </div>`;
+                    <span class="artist-name">${Genero}</span>
+                </div>`;
         }).join('');
 
         const rootElement = document.getElementById('root');
         rootElement.style.display = 'flex';
         rootElement.style.flexDirection = 'row';
         rootElement.innerHTML = artistsMarkup;
+
+        // Update current index based on the clicked artist element
+        const artistElements = document.querySelectorAll('.pop_song2');
+        artistElements.forEach(artistElement => {
+            artistElement.addEventListener('click', () => {
+                currentIndex = parseInt(artistElement.dataset.index);
+                displaySong(uniqueGenre);
+            });
+        });
     }
 
-    displayGenero(uniqueGenero);
-})
+    const displaySong = (items) => {
+        const currentGenre = items[currentIndex]; // current Genre
+        const filterData = songsPlayer.filter(item => item.Genero === currentGenre);
+        const songs = filterData.map(song => {
+            const { n, id, poster, songName, Artista } = song;
+            return `<li class="songItem">
+                        <i class="bi playList bi-play-fill" data-id="${id}"></i>
+                        <span>${n}</span>
+                        <img src="${poster}" alt="">
+                        <h5>
+                            ${songName} <br>
+                            <div class="subtitle">${Artista}</div>
+                        </h5>
+                    </li>`;
+        }).join('');
+        const rootElement = document.getElementById('root');
+        rootElement.innerHTML = songs;
+
+        const makeAllBackground = () => {
+            Array.from(document.getElementsByClassName('songItem')).forEach((e) => {
+                if (i === currentIndex) {
+                    e.style.background = "rgb(105, 105, 105, .1)";
+                } else {
+                    e.style.background = "rgb(105, 105, 105, .0)";
+                }
+            });
+        };
+
+        const makeAllPlays = () => {
+            Array.from(document.getElementsByClassName('playList')).forEach((el) => {
+                el.classList.add('bi-play-fill');
+                el.classList.remove('bi-pause-fill');
+            });
+        };
+
+        const playListElements = document.getElementsByClassName('playList');
+        Array.from(playListElements).forEach((playListElement) => {
+            playListElement.addEventListener('click', (el) => {
+                index = el.target.dataset.id;
+                music.src = `audio/${index}.mp3`;
+                poster_master_play.src = `img/${index}.jpg`;
+                masterPlay.classList.remove('bi-play-fill');
+                masterPlay.classList.add('bi-pause-fill');
+                if (music.paused || music.currentTime <= 0){
+                    music.play();
+                    wave.classList.add('active1');
+                } else {
+                    music.pause();
+                    wave.classList.remove('active1');
+                }
+        
+                makeAllPlays();
+                el.target.classList.remove('bi-play-fill');
+                el.target.classList.add('bi-pause-fill');
+        
+                let songTitles = songsPlayer.filter((els) => {
+                    return els.id == index;
+                });
+        
+                songTitles.forEach(elss => {
+                    let {songName, Artista} = elss;
+                    title.innerHTML = `${songName} <br>
+                    <div class="subtitle">${Artista}</div>`
+                });
+        
+                makeAllBackground();
+                Array.from(document.getElementsByClassName('songItem'))[index - 1].style.background = "rgb(105, 105, 105, .1)"
+            });
+        });
+    };
+
+    displayGenero(uniqueGenre);
+
+    Array.from(document.getElementsByClassName('playListPlay')).forEach((e) => {
+        e.addEventListener('click', () => {
+            const rootElement = document.getElementById('root');
+            rootElement.style.display = 'block';
+            rootElement.style.flexDirection = 'initial';
+        });
+    });
+});
 
 // Player
 let masterPlay = document.getElementById('masterPlay');
