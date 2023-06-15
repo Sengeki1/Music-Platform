@@ -128,6 +128,7 @@ clickIni.addEventListener('click', () => {
             index = al.target.id;
         })
     });
+    
     Array.from(document.getElementsByClassName('playList')).forEach((e) => {
         e.addEventListener('click', (el) => {
             index = el.target.id;
@@ -219,34 +220,51 @@ clickArtist.addEventListener('click', () => {
         const rootElement = document.getElementById('root');
         rootElement.innerHTML = songs;
 
+        const makeAllBackground = () => {
+            Array.from(document.getElementsByClassName('songItem')).forEach((e) => {
+                e.style.background = 'rgb(105, 105, 105, .0)';
+            })
+        }
+
+        const makeAllPlays = () => {
+            Array.from(document.getElementsByClassName('playList')).forEach((el) => {
+                el.classList.add('bi-play-fill');
+                el.classList.remove('bi-pause-fill');  
+            });
+        }
+
         const playListElements = document.getElementsByClassName('playList');
         Array.from(playListElements).forEach((playListElement) => {
             playListElement.addEventListener('click', (el) => {
-                index = el.currentTarget.id;
+                index = el.target.id;
                 music.src = `audio/${index}.mp3`;
                 poster_master_play.src = `img/${index}.jpg`;
                 masterPlay.classList.remove('bi-play-fill');
                 masterPlay.classList.add('bi-pause-fill');
-                if (music.paused || music.currentTime <= 0) {
-                music.play();
-                wave.classList.add('active1');
+                if (music.paused || music.currentTime <= 0){
+                    music.play();
+                    wave.classList.add('active1');
                 } else {
-                music.pause();
-                wave.classList.remove('active1');
+                    music.pause();
+                    wave.classList.remove('active1');
                 }
         
-                el.currentTarget.classList.remove('bi-play-fill');
-                el.currentTarget.classList.add('bi-pause-fill');
+                makeAllPlays();
+                el.target.classList.remove('bi-play-fill');
+                el.target.classList.add('bi-pause-fill');
         
                 let songTitles = songsPlayer.filter((els) => {
-                return els.id == index;
+                    return els.id == index;
                 });
         
-                songTitles.forEach((elss) => {
-                let { songName, Artista } = elss;
-                title.innerHTML = `${songName} <br>
-                                <div class="subtitle">${Artista}</div>`;
+                songTitles.forEach(elss => {
+                    let {songName, Artista} = elss;
+                    title.innerHTML = `${songName} <br>
+                    <div class="subtitle">${Artista}</div>`
                 });
+        
+                makeAllBackground();
+                Array.from(document.getElementsByClassName('songItem'))[index - 1].style.background = "rgb(105, 105, 105, .1)"
             });
         });
     };
