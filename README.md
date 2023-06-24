@@ -84,7 +84,7 @@ Se você deseja contribuir para este projeto, siga as diretrizes abaixo:
 
 ## Licença
 
-Este projeto é licenciado
+Este projeto é licenciado por [ Apache License 2.0 ](LICENSE) A Licença Apache 2.0 permite ao utilizador utilizar, modificar e distribuir o software, inclusive para fins comerciais, sob certas condições em que requer que o utilizador forneça atribuição, incluindo o aviso de direitos autorais e uma declaração de quais modificações foram feitas no software.
 
 ## Contato
 
